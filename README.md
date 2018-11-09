@@ -13,6 +13,14 @@ This subproject is configured to start Elastic Search, Kibana and NGInx to proxy
 + nginx.conf uses the container names to map its proxy_pass to elastic and kibana.
 + kibana has specific configuration on kibana.yml to set the basePath and a specific rewrite to abide by that basePath.
 
+## kafka
+This subproject stands up basic kafka containers:
++ zookeeper
++ kafka
++ schema-registry
++ kafka rest
 
+## kafka-connect
+This subproject stands up the kafka connect broker and a UI 
 
 
