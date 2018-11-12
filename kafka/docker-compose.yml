@@ -66,6 +66,20 @@ services:
    networks:
      - sdh_nw
 
+ kafka-topic-ui:
+  image: landoop/kafka-topics-ui
+  container_name: kafka-topics-ui
+  ports:
+    - 8001:8000
+  environment:
+    - KAFKA_REST_PROXY_URL=http://kafka-rest:8082
+    - PROXY=true
+  depends_on:
+    - kafka
+    - kafka-rest
+  networks:
+    - sdh_nw
+
 networks:
  sdh_nw:
    driver: bridge 
