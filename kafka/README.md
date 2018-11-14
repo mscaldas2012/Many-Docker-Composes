@@ -2,6 +2,8 @@ This compose starts up a kafka broker, zookeeper, Schema registry and REST inter
 
 You can interact with kafka using cli via the docker-compose exec.:
 
+__P.S.: Make sure you update the IP Address for KAFKA_ADVERTISED_LISTENERS__
+
 # Examples:
 
 ## Creating a topic
