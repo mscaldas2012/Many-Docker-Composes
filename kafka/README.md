@@ -24,6 +24,8 @@ docker-app render --set kafka_listen_IP=172.16.2.123
 
 You can interact with kafka using cli via the docker-compose exec.:
 
+__P.S.: Make sure you update the IP Address for KAFKA_ADVERTISED_LISTENERS__
+
 # Examples:
 
 ## Creating a topic
