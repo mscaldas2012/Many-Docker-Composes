@@ -13,6 +13,7 @@ services:
       - esdata1:/usr/share/elasticsearch/data
     ports:
       - 9200:9200
+      - 9300:9300
     networks:
       - esnet
 
@@ -36,9 +37,10 @@ services:
     ports:
         - 80:80
     volumes:
-      - ${PWD}/www:/usr/share/nginx/html:ro
-      - ${PWD}/conf:/etc/nginx/
-    #command: /bin/bash -c "nginx -g 'daemon off;'"
+      - nginx-data:/usr/share/nginx/html
+      - nginx-conf:/etc/nginx/
+
+    command: /bin/bash -c "nginx -g 'daemon off;'"
     ulimits:
       nproc: 65535
     depends_on:
@@ -50,6 +52,23 @@ services:
 volumes:
   esdata1:
     driver: local
+    driver_opts:
+      type: volume
+      device: $PWD/elastic
+      o: bind
+  nginx-conf:
+    driver: local
+    driver_opts:
+      type: volume
+      device: $PWD/conf
+      o: bind
+  nginx-data:
+    driver: local
+    driver_opts:
+      type: volume
+      device: $PWD/www
+      o: bind 
+
  
 networks:
   esnet:      
