@@ -103,6 +103,6 @@ networks:
   kafka_external_port: 9092,
   schema_registry_port: 8081,
   kafka_rest_port: 8082,
-  kafka_listen_IP: 10.0.1.39
+  kafka_listen_IP: 10.0.1.4
 
 }

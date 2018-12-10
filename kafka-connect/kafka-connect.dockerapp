@@ -1,3 +1,19 @@
+# This section contains your application metadata.
+# Version of the application
+version: 0.1.0
+# Name of the application
+name: kafka-connect
+# A short description of the application
+description: 
+# Namespace to use when pushing to a registry. This is typically your Hub username.
+#namespace: myHubUsername
+# List of application maintainers with name and email for each
+maintainers:
+  - name: marcelo
+    email: 
+
+---
+# This section contains the Compose file that describes your application services.
 version: '3.2'
 
 services:  
@@ -7,19 +23,19 @@ services:
     ports:
       - "8083:8083"
     environment:
-      CONNECT_BOOTSTRAP_SERVERS: "kafka:19092"
+      CONNECT_BOOTSTRAP_SERVERS: "http://10.0.1.6:9092"
       CONNECT_REST_PORT: 8083
       CONNECT_GROUP_ID: compose-connect-group
       CONNECT_CONFIG_STORAGE_TOPIC: docker-connect-configs
       CONNECT_OFFSET_STORAGE_TOPIC: docker-connect-offsets
       CONNECT_STATUS_STORAGE_TOPIC: docker-connect-status
       CONNECT_KEY_CONVERTER: org.apache.kafka.connect.json.JsonConverter 
-      CONNECT_KEY_CONVERTER_SCHEMA_REGISTRY_URL: 'http://127.0.0.1:8081'
+      CONNECT_KEY_CONVERTER_SCHEMA_REGISTRY_URL: 'http://10.0.1.5:8081'
       CONNECT_VALUE_CONVERTER: org.apache.kafka.connect.json.JsonConverter 
-      CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL: 'http://127.0.0.1:8081'
+      CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL: 'http://10.0.1.5:8081'
       CONNECT_INTERNAL_KEY_CONVERTER: "org.apache.kafka.connect.json.JsonConverter"
       CONNECT_INTERNAL_VALUE_CONVERTER: "org.apache.kafka.connect.json.JsonConverter"
-      CONNECT_REST_ADVERTISED_HOST_NAME: "127.0.0.1"
+      CONNECT_REST_ADVERTISED_HOST_NAME: "10.0.1.5"
       CONNECT_PLUGIN_PATH: 'usr/share/java,etc/kafka-connect/jars'
       CONNECT_LOG4J_ROOT_LOGLEVEL: "INFO"
       CONNECT_LOG4J_LOGGERS: "org.apache.kafka.connect.runtime.rest=WARN,org.reflections=ERROR"
@@ -53,3 +69,9 @@ networks:
     external:
       name: sdh_nw
    
+
+---
+# This section contains the default values for your application settings.
+{
+   KAFKA_BROKER: 10.0.1.6
+}
