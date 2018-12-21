@@ -1,4 +1,9 @@
-This compose starts up a kafka broker, zookeeper, Schema registry and REST interface
+This compose starts up a kafka broker, zookeeper, Schema registry and REST interface.
+
+Note: if you want just minimal infrastructure - zookeeper and kafka - you can start the minimal compose with:
+```cli
+docker-compose -f docker-compose.minimal.yaml up -d
+```
 
 You can use docker-app to generate new YMLs (docker app available here: https://github.com/docker/app)
 To generate a new file:
