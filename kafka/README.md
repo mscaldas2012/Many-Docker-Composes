@@ -39,11 +39,16 @@ __P.S.: Make sure you update the IP Address for KAFKA_ADVERTISED_LISTENERS__
 docker-compose exec kafka kafka-topics --create --topic test --partitions 1 --replication-factor 1 --zookeeper zookeeper:2181
 ```
 
-## Listing the topic
+## Describing a topic
 
 ```cli
 docker-compose exec kafka kafka-topics --describe --topic test --zookeeper zookeeper:2181
 ```
+## Listing the contents of a topic
+```cli
+ docker-compose exec kafka kafka-console-consumer --topic <topic-name> --bootstrap-server localhost:9092 --from-beginning
+ ```
+ 
 
 ### Posting 42 generated messages to topic test:
 ```cli
